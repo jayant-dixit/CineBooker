@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Booking Confirmation - CineBooker{% endblock %}
+
+{% block content %}
+<div class="ticket-confirmation">
+    <div class="container">
+        <div class="confirmation-card">
+            <div class="confirmation-header">
+                <div class="success-icon">✅</div>
+                <h1>Booking Confirmed!</h1>
+                <p class="confirmation-message">Your tickets have been booked successfully. A confirmation email has been sent to your registered email address.</p>
+            </div>
+            
+            <div class="ticket-details">
+                <h2>Ticket Details</h2>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Booking ID:</span>
+                    <span class="detail-value">#{{ booking.id }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Movie:</span>
+                    <span class="detail-value">{{ booking.movie_name }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Theater:</span>
+                    <span class="detail-value">{{ booking.theater }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Address:</span>
+                    <span class="detail-value">{{ booking.address }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Showtime:</span>
+                    <span class="detail-value">{{ booking.showtime }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Seats:</span>
+                    <span class="detail-value">{{ booking.seats|join(', ') }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Number of Tickets:</span>
+                    <span class="detail-value">{{ booking.seats|length }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Price per Ticket:</span>
+                    <span class="detail-value">₹{{ booking.price_per_ticket }}</span>
+                </div>
+                
+                <div class="detail-row total-row">
+                    <span class="detail-label">Total Amount:</span>
+                    <span class="detail-value">₹{{ booking.total_price }}</span>
+                </div>
+                
+                <div class="detail-row">
+                    <span class="detail-label">Booking Date & Time:</span>
+                    <span class="detail-value">{{ booking.timestamp }}</span>
+                </div>
+            </div>
+            
+            <div class="confirmation-actions">
+                <a href="{{ url_for('home1') }}" class="btn btn-primary">Book More Tickets</a>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Go to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}Home - CineBooker{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="new-hero-section">
+    <div class="hero-background-overlay"></div>
+    <div class="hero-content-wrapper">
+        <div class="container">
+            <div class="hero-main-content">
+                <div class="hero-text-content">
+                    <div class="hero-badge">
+                        <span class="badge-icon">🎬</span>
+                        <span>Welcome to CineBooker</span>
+                    </div>
+                    <h1 class="hero-main-title">
+                        Experience Cinema
+                        <span class="title-highlight">Reimagined</span>
+                    </h1>
+                    <p class="hero-description">
+                        Book movie tickets online with ease. Search by location, view real-time seat availability, 
+                        and complete your bookings in just a few clicks. Your gateway to movie magic, simplified and streamlined.
+                    </p>
+                    <div class="hero-cta-buttons">
+                        <a href="{{ url_for('signup') }}" class="cta-primary">
+                            <span>Get Started</span>
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="{{ url_for('login') }}" class="cta-secondary">
+                            <span>Login</span>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Happy Users</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Movies</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Theaters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-card card-1">
+                        <div class="card-icon">🎫</div>
+                        <div class="card-text">Easy Booking</div>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="card-icon">💺</div>
+                        <div class="card-text">Real-time Seats</div>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="card-icon">🔔</div>
+                        <div class="card-text">Instant Notifications</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="features-showcase">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Why Choose CineBooker?</h2>
+            <p class="section-subtitle">Everything you need for the perfect movie experience</p>
+        </div>
+        
+        <div class="features-grid-new">
+            <div class="feature-box feature-primary">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">🎫</div>
+                </div>
+                <h3 class="feature-title">Easy Booking</h3>
+                <p class="feature-description">Book your tickets in just a few clicks. No more long queues or waiting in line!</p>
+                <div class="feature-link">Learn more →</div>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">💺</div>
+                </div>
+                <h3 class="feature-title">Real-time Seats</h3>
+                <p class="feature-description">View real-time seat availability and pick your preferred seats with our interactive map.</p>
+                <div class="feature-link">Learn more →</div>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">🔔</div>
+                </div>
+                <h3 class="feature-title">Instant Notifications</h3>
+                <p class="feature-description">Get instant email confirmations for your bookings with all the details you need.</p>
+                <div class="feature-link">Learn more →</div>
+            </div>
+            
+            <div class="feature-box">
+                <div class="feature-icon-wrapper">
+                    <div class="feature-icon">📍</div>
+                </div>
+                <h3 class="feature-title">Location Based</h3>
+                <p class="feature-description">Search movies and events based on your location. Find theaters near you instantly.</p>
+                <div class="feature-link">Learn more →</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Book Your Next Movie?</h2>
+            <p class="cta-text">Join thousands of movie lovers and start booking tickets today!</p>
+            <a href="{{ url_for('signup') }}" class="cta-button-large">
+                <span>Start Booking Now</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

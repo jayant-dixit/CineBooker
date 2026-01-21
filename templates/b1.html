@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}Book Tickets - CineBooker{% endblock %}
+
+{% block content %}
+<div class="booking-section">
+    <div class="container">
+        <h1>Book Your Tickets</h1>
+        
+        <div class="booking-details">
+            <div class="movie-booking-info">
+                <h2>{{ movie.name }}</h2>
+                <p class="movie-rating">⭐ Rating: {{ movie.rating }}</p>
+                <p class="movie-theater">📍 Theater: {{ movie.theater }}</p>
+                <p class="movie-address">{{ movie.address }}</p>
+                <p class="movie-showtime">🕐 Showtime: <strong>{{ showtime }}</strong></p>
+                <p class="movie-price">💰 Price: ₹{{ movie.price }} per ticket</p>
+            </div>
+        </div>
+        
+        <form method="POST" action="{{ url_for('tickets') }}" class="booking-form">
+            <input type="hidden" name="movie_name" value="{{ movie.name }}">
+            <input type="hidden" name="theater" value="{{ movie.theater }}">
+            <input type="hidden" name="address" value="{{ movie.address }}">
+            <input type="hidden" name="showtime" value="{{ showtime }}">
+            <input type="hidden" name="price" value="{{ movie.price }}">
+            
+            <div class="seat-selection">
+                <h3>Select Your Seats</h3>
+                <p class="seat-instructions">Click on seats to select/deselect them</p>
+                
+                <div class="screen">SCREEN</div>
+                
+                <div class="seats-layout">
+                    {% for row in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'] %}
+                    <div class="seat-row">
+                        <span class="row-label">{{ row }}</span>
+                        {% for seat_num in range(1, 9) %}
+                        <label class="seat-label">
+                            <input type="checkbox" name="seats" value="{{ row }}{{ seat_num }}" class="seat-checkbox">
+                            <span class="seat">{{ row }}{{ seat_num }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="seat-legend">
+                    <div class="legend-item">
+                        <span class="seat available"></span>
+                        <span>Available</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="seat selected"></span>
+                        <span>Selected</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="seat occupied"></span>
+                        <span>Occupied</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="booking-summary">
+                <h3>Booking Summary</h3>
+                <div id="summary-content">
+                    <p>Select seats to see booking summary</p>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large" id="book-btn" disabled>Confirm Booking</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    const checkboxes = document.querySelectorAll('.seat-checkbox');
+    const summaryContent = document.getElementById('summary-content');
+    const bookBtn = document.getElementById('book-btn');
+    const pricePerTicket = {{ movie.price }};
+    
+    function updateSummary() {
+        const selectedSeats = Array.from(checkboxes)
+            .filter(cb => cb.checked)
+            .map(cb => cb.value);
+        
+        if (selectedSeats.length === 0) {
+            summaryContent.innerHTML = '<p>Select seats to see booking summary</p>';
+            bookBtn.disabled = true;
+        } else {
+            const totalPrice = pricePerTicket * selectedSeats.length;
+            summaryContent.innerHTML = `
+                <p><strong>Selected Seats:</strong> ${selectedSeats.join(', ')}</p>
+                <p><strong>Number of Tickets:</strong> ${selectedSeats.length}</p>
+                <p><strong>Price per Ticket:</strong> ₹${pricePerTicket}</p>
+                <p class="total-price"><strong>Total Amount:</strong> ₹${totalPrice}</p>
+            `;
+            bookBtn.disabled = false;
+        }
+    }
+    
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', updateSummary);
+    });
+</script>
+{% endblock %}

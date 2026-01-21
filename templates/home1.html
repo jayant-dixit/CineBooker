@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Movies - CineBooker{% endblock %}
+
+{% block content %}
+<div class="movies-section">
+    <div class="container">
+        <h1>Now Showing</h1>
+        <p class="section-subtitle">Browse available movies and book your tickets</p>
+        
+        <div class="movies-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <div class="movie-header">
+                    <h3>{{ movie.name }}</h3>
+                    <span class="movie-rating">⭐ {{ movie.rating }}</span>
+                </div>
+                <div class="movie-info">
+                    <p class="movie-genre">{{ movie.genre }}</p>
+                    <p class="movie-theater">📍 {{ movie.theater }}</p>
+                    <p class="movie-address">{{ movie.address }}</p>
+                    <p class="movie-price">₹{{ movie.price }} per ticket</p>
+                </div>
+                <div class="movie-showtimes">
+                    <h4>Available Showtimes:</h4>
+                    <div class="showtimes-list">
+                        {% for showtime in movie.showtimes %}
+                            <a href="{{ url_for('b1', movie_id=movie.id, showtime=showtime) }}" class="showtime-btn">
+                                {{ showtime }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

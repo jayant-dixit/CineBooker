@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}About - CineBooker{% endblock %}
+
+{% block content %}
+<div class="about-section">
+    <div class="container">
+        <h1>About CineBooker</h1>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <h2>Movie Magic - Your Smart Ticket Booking System</h2>
+                <p>
+                    With the increasing demand for a seamless and modern movie-watching experience, 
+                    traditional ticket booking methods often fall short due to long queues, limited 
+                    availability, and inconsistent service. To address this, we introduced CineBooker—a 
+                    smart, cloud-based movie ticket booking system.
+                </p>
+                
+                <p>
+                    Built using Flask for backend development, hosted on AWS EC2, and integrated with 
+                    DynamoDB for dynamic data management, our platform allows users to register, log in, 
+                    and book movie tickets online with ease. Users can search for movies and events based 
+                    on location, view real-time seat availability, and complete their bookings in just 
+                    a few clicks.
+                </p>
+                
+                <p>
+                    Upon booking, AWS SNS sends instant email notifications confirming ticket details, 
+                    enhancing user engagement and trust. This cloud-native solution streamlines the entire 
+                    movie ticketing process, ensuring fast, scalable, and user-friendly access to 
+                    entertainment for all.
+                </p>
+            </div>
+            
+            <div class="features-list">
+                <h3>Key Features:</h3>
+                <ul>
+                    <li>✅ User-friendly registration and login system</li>
+                    <li>✅ Location-based movie and event search</li>
+                    <li>✅ Real-time seat availability</li>
+                    <li>✅ Interactive seat selection</li>
+                    <li>✅ Instant booking confirmations</li>
+                    <li>✅ Email notifications via AWS SNS</li>
+                    <li>✅ Secure and scalable cloud infrastructure</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
