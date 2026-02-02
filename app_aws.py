@@ -6,6 +6,9 @@ import boto3
 from botocore.exceptions import ClientError
 from boto3.dynamodb.conditions import Key
 
+from decimal import Decimal
+import uuid
+
 
 app = Flask(__name__)
 app.secret_key = 'cinebooker-secret-key'
@@ -196,12 +199,13 @@ def tickets():
         flash('Please select at least one seat', 'error')
         return redirect(url_for('home1'))
     
-    total_price = price_per_ticket * len(seats)
+    price_per_ticket = Decimal(str(price_per_ticket))
+    total_price = price_per_ticket * Decimal(len(seats))
 
-    booking_counter = bookings_table.scan()['Count'] + 1
-    
+    booking_counter = str(uuid.uuid4())
+
     booking = {
-        'id': str(booking_counter),
+        'id': booking_counter,
         'user_name': session['user_name'],
         'user_email': session['user_email'],
         'movie_name': movie_name,
