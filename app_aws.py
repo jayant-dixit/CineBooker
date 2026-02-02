@@ -20,7 +20,6 @@ bookings_table = dynamodb.Table('Bookings')
 
 SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:850995534167:CineBookerTopic'
 
-booking_counter = 0
 
 def send_notification(subject, message):
     try:
@@ -198,9 +197,8 @@ def tickets():
         return redirect(url_for('home1'))
     
     total_price = price_per_ticket * len(seats)
-    
-    global booking_counter
-    booking_counter += 1
+
+    booking_counter = bookings_table.scan()['Count'] + 1
     
     booking = {
         'id': booking_counter,
