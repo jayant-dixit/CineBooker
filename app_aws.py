@@ -18,7 +18,7 @@ sns = boto3.client('sns', region_name=REGION_NAME)
 users_table = dynamodb.Table('Users')
 bookings_table = dynamodb.Table('Bookings')
 
-SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:123456789012:CineBookerTopic'
+SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:850995534167:CineBookerTopic'
 
 
 def send_notification(subject, message):
