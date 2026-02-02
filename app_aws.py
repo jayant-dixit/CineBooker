@@ -201,7 +201,7 @@ def tickets():
     booking_counter = bookings_table.scan()['Count'] + 1
     
     booking = {
-        'id': booking_counter,
+        'id': str(booking_counter),
         'user_name': session['user_name'],
         'user_email': session['user_email'],
         'movie_name': movie_name,
