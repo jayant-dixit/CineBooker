@@ -20,6 +20,7 @@ bookings_table = dynamodb.Table('Bookings')
 
 SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:850995534167:CineBookerTopic'
 
+booking_counter = 0
 
 def send_notification(subject, message):
     try:
